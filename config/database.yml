@@ -33,14 +33,6 @@ development:
     <<: *primary_development
     database: foobaz_core_development
     replica: true
-  core:
-    <<: *primary_development
-    database: foobaz_core_development
-    database_tasks: false
-  core_reader:
-    <<: *primary_development
-    database: foobaz_core_development
-    replica: true
   cache:
     <<: *primary_development
     database: foobaz_core_development_cache
