@@ -1,4 +1,4 @@
-class Core::Item < ApplicationRecord
+class Core::Item < CoreRecord
   #
   #
   # Concerns
