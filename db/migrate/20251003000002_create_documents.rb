@@ -1,6 +1,6 @@
-class CreateItems < ActiveRecord::Migration[8.1]
+class CreateDocuments < ActiveRecord::Migration[8.1]
   def change
-    create_table :items do |t|
+    create_table :documents do |t|
       #
       #
       # Associations

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_02_225706) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_03_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -61,6 +61,24 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_02_225706) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string "code", null: false
+    t.text "content"
+    t.text "content_md"
+    t.text "content_raw"
+    t.datetime "created_at", null: false
+    t.datetime "discarded_at"
+    t.string "mood", default: "none", null: false
+    t.string "name", null: false
+    t.jsonb "settings", default: {}, null: false
+    t.datetime "updated_at", null: false
+    t.string "uuid", null: false
+    t.index ["code"], name: "index_documents_on_code", unique: true
+    t.index ["mood"], name: "index_documents_on_mood"
+    t.index ["name"], name: "index_documents_on_name"
+    t.index ["uuid"], name: "index_documents_on_uuid", unique: true
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "code", null: false
     t.text "content"
@@ -68,11 +86,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_02_225706) do
     t.text "content_raw"
     t.datetime "created_at", null: false
     t.datetime "discarded_at"
+    t.string "mood", default: "none", null: false
     t.string "name", null: false
     t.jsonb "settings", default: {}, null: false
     t.datetime "updated_at", null: false
     t.string "uuid", null: false
     t.index ["code"], name: "index_items_on_code", unique: true
+    t.index ["mood"], name: "index_items_on_mood"
     t.index ["name"], name: "index_items_on_name"
     t.index ["uuid"], name: "index_items_on_uuid", unique: true
   end
